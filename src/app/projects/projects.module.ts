@@ -8,6 +8,9 @@ import { ProjectsComponent } from './projects/projects.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    ProjectsComponent
   ]
 })
 export class ProjectsModule { }

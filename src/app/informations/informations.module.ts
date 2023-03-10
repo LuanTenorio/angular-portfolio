@@ -10,6 +10,9 @@ import { InformationsComponent } from './informations/informations.component';
   ],
   imports: [
     CommonModule
+  ],
+  exports: [
+    InformationsComponent
   ]
 })
 export class InformationsModule { }
