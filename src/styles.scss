@@ -1,1 +1,62 @@
-/* You can add global styles to this file, and also import other style files */
+$color-primary-0: #49489C;
+$color-primary: #27267C;
+$color-primary-2: #18177B;
+$font-primary: #F0F0FF;
+$color-light: #F9F9FF;
+$bg-color: linear-gradient(90deg, #EFEFFF 0.01%, #F3F3FA 100%);
+$max-width: 87.5vw;
+$font-shadow-primary: -1px 1px 2px rgba(121, 121, 245, 0.21);
+$font-shadow-light: -1px 1px 2px rgba(39, 38, 124, 0.212);
+$font-shadow-dark: -1px 1px 2px rgba(13, 12, 81, 0.3);
+$box-shadow: 0px 2px 8px rgba(39, 38, 124, 0.3);
+$tag-shadow: 0px 1px 5px rgba(39, 38, 124, 0.2);
+$items-line: 3;
+
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'Open Sans', sans-serif;
+}
+html, body{
+	height: 100%;
+  background-color: $bg-color
+}
+button{
+  cursor: pointer;
+}
+a{
+	text-decoration: none;
+}
+*:focus{
+	outline: none;
+}
+app-root{
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+app-root > * {
+  flex: 1;
+}
+app-header, footer, app-footer, router-outlet{
+  flex: initial;
+}
+app-alert{
+  position: fixed;
+}
+
+.font-light{
+  color: $font-primary;
+  text-shadow: $font-shadow-dark;
+  font-weight: 600;
+}
+
+.center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+

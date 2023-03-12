@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { InformationsService } from '../informations.service';
 
 @Component({
   selector: 'app-informations',
@@ -7,4 +8,15 @@ import { Component } from '@angular/core';
 })
 export class InformationsComponent {
 
+  navigations = [
+    'Sobre mim',
+    'Habilidades',
+    'Cursos',
+    'Projetos',
+    'Contato'
+  ]
+
+  constructor(
+    public readonly informationService: InformationsService
+  ){}
 }

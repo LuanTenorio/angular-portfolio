@@ -1,0 +1,53 @@
+@import "../../../styles.scss";
+
+.side-bar{
+    @extend .font-light;
+    background-color: $color-primary;
+    border-right: 3px solid $color-primary-2;
+    box-shadow: 2px 0px 16px rgba(44, 43, 118, 0.4);
+    position: fixed;
+    width: 30vw;
+    height: 100vh;
+    max-width: 330px;
+    min-width: 260px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 30px 20px;
+}
+.image{
+    width: 90px;
+    height: 90px;
+    border: 2px solid $color-light;
+    border-radius: 50%;
+}
+.short-name, .role, .email{
+    text-align: center;
+}
+.short-name{
+    font-weight: 600;
+    font-size: 22px;
+}
+.navigation{
+    display: flex;
+    flex-direction: column;
+}
+.navigate{
+    padding: 8px 0px;
+    position: relative;
+    cursor: pointer;
+}
+.navigate::after{
+    content: '';
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    background-color: #49489C;
+    bottom: 0px;
+    left: 0px;
+}
+.social-media{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

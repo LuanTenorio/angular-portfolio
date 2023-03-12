@@ -9,7 +9,7 @@ import { ProjectsModule } from './projects/projects.module';
 import { SkillsModule } from './skills/skills.module';
 import { CoursesModule } from './courses/courses.module';
 import { PageComponent } from './page/page.component';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AddTokenInterceptor } from './interceptors/add-token.interceptor';
 import { UpdateTokenInterceptor } from './interceptors/update-token.interceptor';
 
@@ -20,6 +20,7 @@ import { UpdateTokenInterceptor } from './interceptors/update-token.interceptor'
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     LoginModule,
     InformationsModule,
@@ -41,4 +42,4 @@ import { UpdateTokenInterceptor } from './interceptors/update-token.interceptor'
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
