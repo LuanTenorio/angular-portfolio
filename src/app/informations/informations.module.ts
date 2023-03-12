@@ -16,7 +16,8 @@ import { SideBarComponent } from './side-bar/side-bar.component';
     MatSidenavModule
   ],
   exports: [
-    InformationsComponent
+    InformationsComponent,
+    SideBarComponent
   ]
 })
 export class InformationsModule { }

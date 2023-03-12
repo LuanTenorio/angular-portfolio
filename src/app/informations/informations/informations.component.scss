@@ -1,1 +1,14 @@
 @import "../../../styles.scss";
+
+.boxs{
+    display: flex;
+    justify-content: space-between;
+}
+.box{
+    h3{
+        font-size: 25px;
+    }
+}
+p.description{
+    text-align: justify;
+}

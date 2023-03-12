@@ -2,6 +2,7 @@ $color-primary-0: #49489C;
 $color-primary: #27267C;
 $color-primary-2: #18177B;
 $font-primary: #F0F0FF;
+$font-dark: $color-primary-2;
 $color-light: #F9F9FF;
 $bg-color: linear-gradient(90deg, #EFEFFF 0.01%, #F3F3FA 100%);
 $max-width: 87.5vw;
@@ -39,24 +40,69 @@ app-root{
 app-root > * {
   flex: 1;
 }
+app-page{
+  display: flex;
+}
 app-header, footer, app-footer, router-outlet{
   flex: initial;
 }
 app-alert{
   position: fixed;
 }
-
 .font-light{
   color: $font-primary;
   text-shadow: $font-shadow-dark;
   font-weight: 600;
 }
-
+.font-primary{
+  color: $font-dark;
+  text-shadow: $font-shadow-dark;
+  font-weight: 600;
+}
 .center{
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
+  .title{
+    font-weight: 600;
+    strong{
+      font-weight: 700;
+    }
+  }
 
+  .content{
+    padding: 0px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+.box{
+  padding: 10px;
+  box-shadow: $box-shadow;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  background-color: $color-light;
+  border-radius: 10px;
+  width: 22.5%;
+  text-align: center;
+}
+.box-dark{
+  @extend .box;
+  @extend .font-light;
 
+  background-color: $color-primary-2;
+}
+.box-light{
+  @extend .box;
+  @extend .font-primary;
+}
