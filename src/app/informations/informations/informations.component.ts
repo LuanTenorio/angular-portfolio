@@ -8,14 +8,6 @@ import { InformationsService } from '../informations.service';
 })
 export class InformationsComponent {
 
-  navigations = [
-    'Sobre mim',
-    'Habilidades',
-    'Cursos',
-    'Projetos',
-    'Contato'
-  ]
-
   constructor(
     public readonly informationService: InformationsService
   ){}
