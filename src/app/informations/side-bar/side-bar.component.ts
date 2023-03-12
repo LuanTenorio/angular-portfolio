@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { InformationsService } from '../informations.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-side-bar',
@@ -16,8 +17,13 @@ export class SideBarComponent {
     'Contato'
   ]
 
+  isEdit = false
+
   constructor(
-    public readonly informationService: InformationsService
-  ){}
+    public readonly informationService: InformationsService,
+    private readonly route: ActivatedRoute
+  ){
+    this.isEdit = this.route.snapshot.data['isPanel'] ?? false
+  }
 
 }

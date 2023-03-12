@@ -1,0 +1,15 @@
+@import '../../../styles.scss';
+
+.skills{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+}
+.skill{
+    @extend .box-animate;
+    $margin: .5% * $items-line;
+    justify-content: center;
+    width: 100% / $items-line - $margin;
+    margin-bottom: $margin;
+}

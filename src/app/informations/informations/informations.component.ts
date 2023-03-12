@@ -14,7 +14,7 @@ export class InformationsComponent {
   constructor(
     public readonly informationService: InformationsService,
     private readonly route: ActivatedRoute
-  ){
+    ){
     this.isEdit = this.route.snapshot.data['isPanel'] ?? false
   }
 

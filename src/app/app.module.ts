@@ -12,6 +12,7 @@ import { PageComponent } from './page/page.component';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AddTokenInterceptor } from './interceptors/add-token.interceptor';
 import { UpdateTokenInterceptor } from './interceptors/update-token.interceptor';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { UpdateTokenInterceptor } from './interceptors/update-token.interceptor'
   ],
   imports: [
     BrowserModule,
+    RouterModule,
     HttpClientModule,
     AppRoutingModule,
     LoginModule,
