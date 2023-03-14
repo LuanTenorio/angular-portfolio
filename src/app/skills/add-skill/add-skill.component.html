@@ -22,8 +22,8 @@
             <label for="add-skill-pathImage">Imagem</label>
             <input
                 type="file"
-                formControlName="pathImage"
                 id="add-skill-pathImage"
+                (change)="changeImage($event)"
             >
         </div>
         <div class="field">

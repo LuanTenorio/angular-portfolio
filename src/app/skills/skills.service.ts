@@ -6,6 +6,7 @@ import { catchError, map } from 'rxjs';
 import { ResponseSkillDto } from './dto/response-skill.dto';
 import { CreateSkillDto } from './dto/create-skill.dto';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -44,6 +45,6 @@ export class SkillsService {
     )
   )
 
-  addSkill = (createSkill: CreateSkillDto) => this.http.post<ResponseSkillDto>(this.API, createSkill)
+  addSkill = (createSkill: FormData | any) => this.http.post<ResponseSkillDto>(this.API, createSkill)
 
 }
