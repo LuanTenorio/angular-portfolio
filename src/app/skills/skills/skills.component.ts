@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { SkillsService } from '../skills.service';
 
 @Component({
@@ -6,13 +6,16 @@ import { SkillsService } from '../skills.service';
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.scss']
 })
-export class SkillsComponent {
+export class SkillsComponent implements OnInit {
+
+  @Input('isPanel') isPanel: boolean = false
 
   constructor(
     public readonly skillService: SkillsService
-  ){
-    console.log(skillService.capeOfSkills);
+  ){}
 
+  ngOnInit(){
+    console.log(this.isPanel)
   }
 
 }

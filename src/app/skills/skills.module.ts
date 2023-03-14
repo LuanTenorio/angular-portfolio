@@ -4,16 +4,20 @@ import { SkillsComponent } from './skills/skills.component';
 import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { SkillComponent } from './skill/skill.component';
+import { AddSkillComponent } from './add-skill/add-skill.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     SkillsComponent,
-    SkillComponent
+    SkillComponent,
+    AddSkillComponent,
   ],
   imports: [
     CommonModule,
     BrowserModule,
-    RouterModule
+    ReactiveFormsModule,
+    RouterModule,
   ],
   exports: [
     SkillsComponent

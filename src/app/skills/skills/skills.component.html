@@ -13,4 +13,7 @@
             <p>{{ skill.name }}</p>
         </a>
     </div>
+    <div class="buttons" *ngIf="isPanel">
+        <a [routerLink]="['adicionar', 'habilidade']" class="">Adicionar</a>
+    </div>
 </div>

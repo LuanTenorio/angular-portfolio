@@ -3,13 +3,15 @@ import { Injectable } from '@angular/core';
 import { ResponseCapeOfSkillsDto } from './dto/response-cape-of-skill.dto';
 import { CapeOfSkillsModel } from './model/cape-of-skill.model';
 import { catchError, map } from 'rxjs';
+import { ResponseSkillDto } from './dto/response-skill.dto';
+import { CreateSkillDto } from './dto/create-skill.dto';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SkillsService {
 
-  API = 'http://localhost:3000/api/information'
+  API = 'http://localhost:3000/api/skill/'
   loaded = false
   capeOfSkills?: CapeOfSkillsModel[] = [
     {id: 1, name: 'HTML'},
@@ -24,7 +26,7 @@ export class SkillsService {
     private readonly http: HttpClient
   ) { }
 
-  getCapeOfSkills = () => this.http.get<ResponseCapeOfSkillsDto>(this.API).pipe(
+  getCapeOfSkills = () => this.http.get<ResponseCapeOfSkillsDto>(this.API + 'capes/').pipe(
     map(
       ({capes}) => {
         console.log(capes);
@@ -41,5 +43,7 @@ export class SkillsService {
       }
     )
   )
+
+  addSkill = (createSkill: CreateSkillDto) => this.http.post<ResponseSkillDto>(this.API, createSkill)
 
 }

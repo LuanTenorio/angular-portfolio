@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { InformationsService } from '../informations/informations.service';
 import { PageService } from './page.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-page',
@@ -9,11 +10,13 @@ import { PageService } from './page.service';
 })
 export class PageComponent {
 
-  constructor(
-    private readonly pageService: PageService
-  ){
-    console.log('pageeeeeeeeeee');
+  isPanel: boolean
 
+  constructor(
+    private readonly pageService: PageService,
+    private readonly activatedRoute: ActivatedRoute
+  ){
+    this.isPanel = activatedRoute.snapshot.data['isPanel'] ?? false
   }
 
 }

@@ -21,7 +21,7 @@ export class InformationsService {
   getInformations = () => this.http.get<ResponseInformationDto>(this.API).pipe(
     map(
       ({information}) => {
-        console.log(information);
+        // console.log(information);
 
         this.information = information
         this.loaded = true

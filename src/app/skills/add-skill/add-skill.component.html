@@ -1,0 +1,43 @@
+<div class="content">
+    <form [formGroup]="form" (ngSubmit)="save()">
+        <div class="field">
+            <label for="add-skill-name">Nome</label>
+            <input
+                type="text"
+                formControlName="name"
+                id="add-skill-name"
+                placeholder="Nome..."
+            >
+        </div>
+        <div class="field">
+            <label for="add-skill-description">Descrição</label>
+            <input
+                type="text"
+                formControlName="description"
+                id="add-skill-description"
+                placeholder="Descrição."
+            >
+        </div>
+        <div class="field">
+            <label for="add-skill-pathImage">Imagem</label>
+            <input
+                type="file"
+                formControlName="pathImage"
+                id="add-skill-pathImage"
+            >
+        </div>
+        <div class="field">
+            <label for="add-skill-link">Link</label>
+            <input
+                type="text"
+                formControlName="link"
+                id="add-skill-link"
+                placeholder="Link..."
+                translate="no"
+            >
+        </div>
+        <div class="buttons">
+            <button type="submit">Salvar</button>
+        </div>
+    </form>
+</div>

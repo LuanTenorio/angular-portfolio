@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { InformationsService } from '../informations.service';
 import { ActivatedRoute } from '@angular/router';
 
@@ -9,13 +9,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class InformationsComponent {
 
-  isEdit = false
+  @Input('isPanel') isPanel: boolean = false
 
   constructor(
     public readonly informationService: InformationsService,
     private readonly route: ActivatedRoute
     ){
-    this.isEdit = this.route.snapshot.data['isPanel'] ?? false
+    this.isPanel = this.route.snapshot.data['isPanel'] ?? false
   }
 
 
