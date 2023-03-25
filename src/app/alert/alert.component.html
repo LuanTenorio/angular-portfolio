@@ -1,0 +1,12 @@
+<div class="warnings" [ngStyle]="{'--timeForDeleteAlert': alertService.timeForDelete + 'ms'}">
+  <div
+    class="active-alerts"
+    *ngFor="let alert of alertService.alerts, let i = index"
+    (click)="alertService.deleteAlert(alert.id)"
+    [ngStyle]="{
+      '--timeForDeleteAlert': alert.time + 'ms'
+    }"
+  >
+    <p>{{ alert.warning }}</p>
+  </div>
+</div>

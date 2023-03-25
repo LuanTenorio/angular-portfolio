@@ -3,15 +3,30 @@ import { CommonModule } from '@angular/common';
 import { ProjectsComponent } from './projects/projects.component';
 import { ProjectComponent } from './project/project.component';
 import { AddProjectComponent } from './add-project/add-project.component';
+import { RouterModule } from '@angular/router';
+import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { ArrowToBackComponent } from '../page/arrow-to-back/arrow-to-back.component';
+import { CarrosselComponent } from '../page/carrossel/carrossel.component';
+import { ProjectImageModel } from './model/project-image.model';
+import { PageModule } from '../page/page.module';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { TagModule } from '../tag/tag.module';
 
 @NgModule({
   declarations: [
     ProjectsComponent,
     ProjectComponent,
-    AddProjectComponent
+    AddProjectComponent,
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule,
+    BrowserModule,
+    ReactiveFormsModule,
+    TagModule,
+    PageModule,
+    NgxFileDropModule
   ],
   exports: [
     ProjectsComponent

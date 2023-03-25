@@ -13,22 +13,30 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AddTokenInterceptor } from './interceptors/add-token.interceptor';
 import { UpdateTokenInterceptor } from './interceptors/update-token.interceptor';
 import { RouterModule } from '@angular/router';
+import { NgxFileDropModule } from 'ngx-file-drop';
+import { AlertModule } from './alert/alert.module';
+import { PageModule } from './page/page.module';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageComponent
+    PageComponent,
   ],
   imports: [
     BrowserModule,
     RouterModule,
     HttpClientModule,
     AppRoutingModule,
+    MatChipsModule,
     LoginModule,
     InformationsModule,
     ProjectsModule,
+    AlertModule,
     SkillsModule,
-    CoursesModule
+    CoursesModule,
+    NgxFileDropModule,
+    PageModule,
   ],
   providers: [
     {

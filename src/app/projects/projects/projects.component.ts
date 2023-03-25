@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ProjectsService } from '../projects.service';
 
 @Component({
   selector: 'app-projects',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent {
+
+  @Input('isPanel') isPanel = false
+
+  constructor(
+    public readonly projectsService: ProjectsService
+  ){}
 
 }

@@ -1,0 +1,59 @@
+@import '../../../styles.scss';
+
+ngx-file-drop{
+    padding: 0px;
+    width: 100%;
+    min-height: 175px;
+}
+.drop-image{
+    @extend .box-light;
+    width: 100%;
+    padding: 25px;
+    background-color: #fff;
+    position: relative;
+    background: #fffdfd;
+    border-radius: 15px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+svg{
+    cursor: pointer;
+}
+.on-drop{
+    position: absolute;
+    background-color: rgba($color: #000000, $alpha: .3);
+    width: 100%;
+    min-height: 100%;
+    top: 0px;
+    left: 0px;
+    border-radius: inherit;
+    cursor: copy;
+}
+.imagesDropped{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    .image{
+        $margin: 2%;
+        $width: 100% / $items-line - $margin;
+        width: $width;
+        padding-bottom: $width / 5 * 3;
+        background-color: #eee;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 7px;
+        box-shadow: $box-shadow;
+        position: relative;
+        margin-bottom: $margin;
+    }
+}
+.close{
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}

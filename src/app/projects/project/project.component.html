@@ -1,1 +1,17 @@
-<p>project works!</p>
+<div class="container" *ngIf="loaded && project !== undefined">
+    <arrow-to-back></arrow-to-back>
+    <h2 class="box-light">{{ project.name }}</h2>
+    <app-carrossel [paths]="pathsTreatment(project.projectImage)"></app-carrossel>
+    <div class="tags">
+        <!--add-tags-->
+    </div>
+    <p class="description">
+        {{ project.description }}
+    </p>
+    <div class="buttons">
+        <a target="_blank" [href]="project.linkLayout" *ngIf="project.linkLayout !== undefined">Layout</a>
+        <a target="_blank" [href]="project.linkProject" *ngIf="project.linkProject !== undefined">Visitar Site</a>
+        <a target="_blank" [href]="project.linkGithub" *ngIf="project.linkGithub !== undefined">GitHub</a>
+    </div>
+</div>
+<div class="loading" *ngIf="!loaded || project == undefined"></div>
