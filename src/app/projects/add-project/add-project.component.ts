@@ -5,6 +5,7 @@ import { SpinnerService } from '../../page/spinner/spinner.service';
 import { AlertService } from '../../alert/alert.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { ImageDto } from '../../dto/image.dto';
 
 @Component({
   selector: 'app-add-project',
@@ -14,7 +15,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 export class AddProjectComponent {
 
   form: FormGroup
-  images: {file: File, preview: string}[] = []
+  images: ImageDto[] = []
   isDroping = false
 
   constructor(

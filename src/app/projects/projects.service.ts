@@ -21,7 +21,7 @@ export class ProjectsService {
     private readonly http: HttpClient
   ){ }
 
-  getProjects = () => this.http.get<ResponseCapeProjectsDto>(this.API + 'capes').pipe(
+  getCapeProjects = () => this.http.get<ResponseCapeProjectsDto>(this.API + 'capes').pipe(
     map(
       ({capes}) => {
         console.log(capes);

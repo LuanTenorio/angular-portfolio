@@ -3,6 +3,7 @@ import { InformationsService } from '../informations/informations.service';
 import { forkJoin } from 'rxjs';
 import { SkillsService } from '../skills/skills.service';
 import { ProjectsService } from '../projects/projects.service';
+import { CoursesService } from '../courses/courses.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class PageService {
   constructor(
     private readonly informationsService: InformationsService,
     private readonly skillsService: SkillsService,
-    private readonly projectsService: ProjectsService
+    private readonly projectsService: ProjectsService,
+    private readonly coursesService: CoursesService,
   ){
     this.loadInitialRequests().subscribe(requests => {
       this.loaded = true
@@ -25,7 +27,8 @@ export class PageService {
     const requests = [
       this.informationsService.getInformations(),
       this.skillsService.getCapeOfSkills(),
-      this.projectsService.getProjects()
+      this.projectsService.getCapeProjects(),
+      this.coursesService.getCapeCourses(),
     ]
 
     return forkJoin(requests)
