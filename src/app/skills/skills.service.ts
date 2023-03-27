@@ -5,6 +5,7 @@ import { CapeOfSkillsModel } from './model/cape-of-skill.model';
 import { catchError, map } from 'rxjs';
 import { ResponseSkillDto } from './dto/response-skill.dto';
 import { CreateSkillDto } from './dto/create-skill.dto';
+import { SkillModel } from './model/skill.model';
 
 
 @Injectable({
@@ -22,6 +23,7 @@ export class SkillsService {
     {id: 5, name: 'NestJs'},
     {id: 6, name: 'git e github'},
   ]
+  skills: SkillModel[] = []
 
   constructor(
     private readonly http: HttpClient
@@ -46,5 +48,6 @@ export class SkillsService {
   )
 
   addSkill = (createSkill: FormData | any) => this.http.post<ResponseSkillDto>(this.API, createSkill)
+  getSkill = (skillId: number) => this.http.get<ResponseSkillDto>(this.API + skillId)
 
 }

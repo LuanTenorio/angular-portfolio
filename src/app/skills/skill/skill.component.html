@@ -1,1 +1,14 @@
-<p>skill works!</p>
+<div class="container" *ngIf="loaded && skill !== undefined">
+    <arrow-to-back></arrow-to-back>
+    <div class="image" [ngStyle]="{
+        'background-image': 'url('+ skill.pathImage +')'
+    }"></div>
+    <h2 class="box-light">{{ skill.name }}</h2>
+    <p class="description">
+        {{ skill.description }}
+    </p>
+    <div class="buttons">
+        <a target="_blank" [href]="skill.link">Layout</a>
+    </div>
+</div>
+<div class="loading" *ngIf="!loaded || skill == undefined"></div>

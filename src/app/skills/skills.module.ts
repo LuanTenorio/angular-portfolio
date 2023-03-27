@@ -6,6 +6,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { SkillComponent } from './skill/skill.component';
 import { AddSkillComponent } from './add-skill/add-skill.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { PageModule } from '../page/page.module';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     ReactiveFormsModule,
     RouterModule,
+    PageModule,
   ],
   exports: [
     SkillsComponent
