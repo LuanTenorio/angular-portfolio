@@ -1,10 +1,14 @@
 @import "../../../styles.scss";
 
-.image{
+.cover{
     width: 90px;
     height: 90px;
     border: 2px solid $color-light;
     border-radius: 50%;
+    background-color: #eee;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .short-name, .role, .email{
     text-align: center;
@@ -21,6 +25,7 @@
     padding: 8px 0px;
     position: relative;
     cursor: pointer;
+    font-size: 20px;
 }
 .navigate::after{
     content: '';

@@ -2,5 +2,22 @@
 
 
 .projects{
-    @extend .box-animate;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: stretch;
+
+    .project{
+        @extend .box-light, .box-animate;
+        $margin: .5% * $items-line;
+        justify-content: flex-start;
+        width: 100% / $items-line - $margin;
+        position: relative;
+        padding: 5px;
+
+        .description{
+            overflow-y: auto;
+            max-height: 70px;
+        }
+    }
 }

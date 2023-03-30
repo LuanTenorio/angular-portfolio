@@ -1,0 +1,1 @@
+export const clearStringUtil = (str: string) => str.replace(/\s+/g, "").toLowerCase()

@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ProjectsService } from '../projects.service';
-import { SpinnerService } from '../../page/spinner/spinner.service';
-import { AlertService } from '../../alert/alert.service';
-import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AlertService } from '../../alert/alert.service';
 import { ImageDto } from '../../dto/image.dto';
+import { SpinnerService } from '../../page/spinner/spinner.service';
+import { ProjectsService } from '../projects.service';
 
 @Component({
   selector: 'app-add-project',
@@ -13,17 +13,15 @@ import { ImageDto } from '../../dto/image.dto';
   styleUrls: ['./add-project.component.scss']
 })
 export class AddProjectComponent {
-
   form: FormGroup
   images: ImageDto[] = []
   isDroping = false
-
   constructor(
     private readonly fb: FormBuilder,
     private readonly projectsService: ProjectsService,
     private readonly spinnerService: SpinnerService,
     private readonly alertService: AlertService,
-    private readonly router: Router
+    private readonly router: Router,
   ){
     this.form = fb.group({
       name: ['', [Validators.required]],
@@ -34,9 +32,7 @@ export class AddProjectComponent {
       linkGithub: ['']
     })
   }
-
   setIsDropping = (value: boolean) => this.isDroping = value
-
   save(){
     if(this.form.valid && this.images.length !== 0){
       const spinnerId = this.spinnerService.addLoadingRequest()
@@ -45,7 +41,6 @@ export class AddProjectComponent {
         ...this.form.value,
         images
       }
-
       this.projectsService.addProject(createProjectDto).subscribe(
         ({project}) => {
           this.spinnerService.removeLoadingRequest(spinnerId)
@@ -60,23 +55,19 @@ export class AddProjectComponent {
     }else
       this.alertService.addAlert('Formulário invalido')
   }
-
   onFileSelected(event: any){
     for(const file of event.target.files)
       this.pushFile(file)
   }
-
   drop(event: any){
     event.preventDefault()
     this.setIsDropping(false)
     for(const file of event.dataTransfer.files)
       this.pushFile(file)
   }
-
   allowDrop(event: any) {
     event.preventDefault();
   }
-
   private pushFile(file: File){
     const reader = new FileReader();
     reader.readAsDataURL(file)
@@ -87,7 +78,6 @@ export class AddProjectComponent {
         this.images.push({file, preview})
     }
   }
-
   deleteFile(index: number){
     this.images.splice(index, 1)
   }

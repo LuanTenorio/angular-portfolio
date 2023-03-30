@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InformationsService } from '../informations/informations.service';
-import { forkJoin } from 'rxjs';
+import { Subject, forkJoin } from 'rxjs';
 import { SkillsService } from '../skills/skills.service';
 import { ProjectsService } from '../projects/projects.service';
 import { CoursesService } from '../courses/courses.service';
@@ -11,6 +11,7 @@ import { CoursesService } from '../courses/courses.service';
 export class PageService {
 
   loaded = false
+  scrollTo = new Subject<string>()
 
   constructor(
     private readonly informationsService: InformationsService,

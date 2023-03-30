@@ -1,5 +1,13 @@
-<div class="carrossel">
-    <div class="scroll">
-        <img [src]="path" alt="Capa do Projeto" *ngFor="let path of paths">
+<div class="carrossel-box">
+    <div class="arrow left" (click)="move(false)"><</div>
+    <div class="arrow right" (click)="move(true)">></div>
+    <div class="carrossel" #carrossel>
+        <div class="scroll" [ngStyle]="{
+            '--pathsNumber': paths.length
+        }">
+            <div class="image" *ngFor="let path of paths" [ngStyle]="{
+                'background-image': 'url(' + path + ')'
+            }"></div>
+        </div>
     </div>
 </div>

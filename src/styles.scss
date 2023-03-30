@@ -57,6 +57,10 @@ app-header, footer, app-footer, router-outlet{
 app-alert{
   position: fixed;
 }
+h1{
+  @extend .box-light;
+  width: auto;
+}
 .font-light{
   color: $font-primary;
   text-shadow: $font-shadow-dark;
@@ -75,8 +79,8 @@ app-alert{
 .container{
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  min-height: 100vh;
+  gap: 20px;
+  align-items: baseline;
 
   .title{
     font-weight: 600;
@@ -86,11 +90,14 @@ app-alert{
   }
 
   .content{
+    width: 100%;
     padding: 0px 10px;
     display: flex;
     flex-direction: column;
     gap: 20px;
   }
+}
+.init-page-container{
 }
 .box{
   padding: 10px;
@@ -102,7 +109,6 @@ app-alert{
   gap: 8px;
   background-color: $color-light;
   border-radius: 10px;
-  width: 22.5%;
   text-align: center;
 }
 .box-dark{
@@ -112,15 +118,15 @@ app-alert{
   background-color: $color-primary-2;
 }
 .box-light{
-  @extend .box;
-  @extend .font-primary;
+  @extend .box, .font-primary;
+  padding: 10px 15px;
 }
 .box-animate{
   transition: 0.4s cubic-bezier(.55,-0.73,.56,1.93);
   cursor: pointer;
 
   &:hover{
-    transform: translateY(-3px) scale(1.1);
+    transform: translateY(-3px) scale(1.075);
   }
 }
 .container-to-add{
@@ -133,14 +139,16 @@ app-alert{
   align-items: center;
 }
 .button{
-  @extend .font-primary;
-  @extend .box-animate;
+  @extend .font-primary, .box-animate;
   border-radius: 7px;
   border: 1px solid $color-primary;
   padding: 6px 12px;
   box-shadow: $input-shadow;
   font-size: 16px;
   background-color: rgba(255, 255, 255, 0.205);
+}
+.button-danger{
+  @extend .button;
 }
 .image{
   $width: 100%;
@@ -166,6 +174,7 @@ form{
     @extend .center;
     flex-direction: column;
     box-shadow: $box-shadow;
+    justify-content: flex-start;
     width: $field-width;
     background-color: #fffdfd;
     border-radius: 8px;
@@ -186,4 +195,41 @@ form{
       font-size: 16px;
     }
   }
+
+  .big-field{
+    @extend .field;
+    width: 100%;
+  }
+}
+
+.loading {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    background: #0000005e;
+    left: 0px;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.loading:after {
+    content: "";
+    display: block;
+    width: 64px;
+    height: 64px;
+    margin: 8px;
+    border-radius: 50%;
+    border: 6px solid $color-light;
+    border-color: $color-light transparent $color-light transparent;
+    animation: lds-dual-ring 1.2s linear infinite;
+}
+
+@keyframes lds-dual-ring {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }

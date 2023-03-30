@@ -3,17 +3,17 @@
     <div class="courses">
         <a
             *ngFor="let course of coursesService.capeCourse, let i = index"
-            [routerLink]="['/', 'projeto', course.id]"
+            [routerLink]="['/', 'curso', course.id]"
             class="course"
         >
             <div class="image" [ngStyle]="{
-                'background': 'url(' + course.cover + ')'
+                'background-image': 'url(' + course.pathImage + ')'
             }"></div>
             <p class="name">{{ course.name }}</p>
             <p class="description">{{ course.shortDescription }}</p>
         </a>
     </div>
     <div class="buttons" *ngIf="isPanel">
-        <a [routerLink]="['adicionar', 'projeto']" class="button">Adicionar</a>
+        <a [routerLink]="['adicionar', 'curso']" class="button">Adicionar</a>
     </div>
 </div>

@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { InformationsService } from '../informations.service';
 import { ActivatedRoute } from '@angular/router';
+import { PageService } from '../../page/page.service';
+import { clearStringUtil } from '../../util/clear-string.util';
 
 @Component({
   selector: 'app-side-bar',
@@ -14,16 +16,17 @@ export class SideBarComponent {
     'Habilidades',
     'Cursos',
     'Projetos',
-    'Contato'
   ]
 
   isEdit = false
+  clearString = clearStringUtil
+  scrollTo = (component: string) => this.pageService.scrollTo.next(component)
 
   constructor(
     public readonly informationService: InformationsService,
-    private readonly route: ActivatedRoute
+    private readonly route: ActivatedRoute,
+    private readonly pageService: PageService
   ){
     this.isEdit = this.route.snapshot.data['isPanel'] ?? false
   }
-
 }

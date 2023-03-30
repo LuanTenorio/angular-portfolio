@@ -15,11 +15,21 @@ export class CoursesService {
 
   API = 'http://localhost:3000/api/course/'
   capeCourse: CapeCourseModel[] = [
-    {id: 1, name: 'Angular', cover: 'pathhhhhhhhhhhhhhh', shortDescription: 'descriptionnnnnnnnnnnnnnnnnnnnnnnnnnn'},
-    {id: 2, name: 'NestJs', cover: 'pathhhhhhhhhhhhhhh', shortDescription: 'descriptionnnnnnnnnnnnnnnnnnnnnnnnnnn'},
-    {id: 3, name: 'SQL', cover: 'pathhhhhhhhhhhhhhh', shortDescription: 'descriptionnnnnnnnnnnnnnnnnnnnnnnnnnn'}
+    {id: 1, name: 'Angular', pathImage: 'https://assets.website-files.com/5d6547c38725c03ee34b7183/5dd83906cd7d375be1133a8e_15_cursos_online.jpg', shortDescription: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters'},
+    {id: 2, name: 'NestJs', pathImage: 'https://assets.website-files.com/5d6547c38725c03ee34b7183/5dd83906cd7d375be1133a8e_15_cursos_online.jpg', shortDescription: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters'},
+    {id: 3, name: 'SQL', pathImage: 'https://assets.website-files.com/5d6547c38725c03ee34b7183/5dd83906cd7d375be1133a8e_15_cursos_online.jpg', shortDescription: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters'}
   ]
-  courses: CourseModel[] = []
+  courses: CourseModel[] = [
+    {
+      id: 1, 
+      name: 'Angular', 
+      pathImage: 'https://assets.website-files.com/5d6547c38725c03ee34b7183/5dd83906cd7d375be1133a8e_15_cursos_online.jpg', 
+      shortDescription: 'descrição curta',
+      description: 'descrição normal',
+      certificate: 'linkkk',
+      order: 1
+    },
+  ]
   loaded = false
 
   constructor(

@@ -8,12 +8,12 @@
                 'box-light': i % 2 !== 0,
                 'skill': true
             }"
-            [routerLink]="['habilidade', skill.id]"
+            [routerLink]="['/habilidade', skill.id]"
         >
             <p>{{ skill.name }}</p>
         </a>
     </div>
     <div class="buttons" *ngIf="isPanel">
-        <a [routerLink]="['adicionar', 'habilidade']" class="">Adicionar</a>
+        <a [routerLink]="['adicionar', 'habilidade']" class="button">Adicionar</a>
     </div>
 </div>

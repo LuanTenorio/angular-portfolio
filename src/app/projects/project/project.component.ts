@@ -23,10 +23,12 @@ export class ProjectComponent {
   ){
     const id = activatedRoute.snapshot.params['id']
     const curProject = this.projectsService.getProjectByProjects(id)
+    console.log(curProject)
     if(curProject){
       console.log('do arayyyyyyyyyy')
       this.project = curProject
       this.loaded = true
+      console.log(this.project)
     }
     else
       this.projectsService.getProject(id).subscribe(

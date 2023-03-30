@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResponseCapeOfSkillsDto } from './dto/response-cape-of-skill.dto';
 import { CapeOfSkillsModel } from './model/cape-of-skill.model';
@@ -6,7 +6,7 @@ import { catchError, map } from 'rxjs';
 import { ResponseSkillDto } from './dto/response-skill.dto';
 import { CreateSkillDto } from './dto/create-skill.dto';
 import { SkillModel } from './model/skill.model';
-
+import { ResponseGenericDelete } from '../dto/response-generic-delete.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +14,9 @@ import { SkillModel } from './model/skill.model';
 export class SkillsService {
 
   API = 'http://localhost:3000/api/skill/'
+
   loaded = false
-  capeOfSkills?: CapeOfSkillsModel[] = [
-    {id: 1, name: 'HTML'},
-    {id: 2, name: 'CSS'},
-    {id: 3, name: 'JS'},
-    {id: 4, name: 'Angular'},
-    {id: 5, name: 'NestJs'},
-    {id: 6, name: 'git e github'},
-  ]
+  capeOfSkills: CapeOfSkillsModel[] = []
   skills: SkillModel[] = []
 
   constructor(
@@ -34,7 +28,7 @@ export class SkillsService {
       ({capes}) => {
         console.log(capes);
 
-        this.capeOfSkills = capes
+        this.capeOfSkills = [...capes, {id: 9, name: 'peppa'}]
         this.loaded = true
         return {capes}
       }
@@ -47,7 +41,43 @@ export class SkillsService {
     )
   )
 
-  addSkill = (createSkill: FormData | any) => this.http.post<ResponseSkillDto>(this.API, createSkill)
+  addSkill = (createSkill: FormData) => this.http.post<ResponseSkillDto>(this.API, createSkill)
+  patchSkill = (createSkill: FormData, skillId: number) => this.http.post<ResponseSkillDto>(this.API + skillId, createSkill)
   getSkill = (skillId: number) => this.http.get<ResponseSkillDto>(this.API + skillId)
+  deleteSkill = (skillId: number) => this.http.delete<ResponseGenericDelete>(this.API + skillId)
+
+  addSkillInArray(skill: SkillModel){
+    const indexSkill = this.skills.findIndex(({id}) => skill.id == id)
+    if(indexSkill == -1)
+      this.skills.push(skill)
+
+    const indexCape = this.capeOfSkills.findIndex(({id}) => id == skill.id)
+    if(indexCape !== -1)
+      this.capeOfSkills.push({id: skill.id, name: skill.name})
+  }
+
+  deleteSkillInArray(skillId: number){
+    const indexSkill = this.skills.findIndex(({id}) => id == skillId)
+    if(indexSkill !== -1)
+      this.skills.splice(indexSkill, 1)
+
+    const indexCape = this.capeOfSkills.findIndex(({id}) => id == skillId)
+      if(indexCape !== -1)
+        this.capeOfSkills.splice(indexCape, 1)
+  }
+
+  updateSkillInArray(skill: SkillModel){
+    const index = this.skills.findIndex(({id}) => skill.id == id)
+    if(index !== -1)
+      this.skills[index] = skill
+    else
+      this.skills.push(skill)
+
+    const indexCape = this.capeOfSkills.findIndex(({id}) => id == skill.id)
+    if(indexCape !== -1)
+      this.capeOfSkills[indexCape].name = skill.name
+    else
+      this.addSkillInArray(skill)
+  }
 
 }

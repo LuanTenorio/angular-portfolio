@@ -1,14 +1,16 @@
 <div class="container" *ngIf="loaded && skill !== undefined">
     <arrow-to-back></arrow-to-back>
-    <div class="image" [ngStyle]="{
-        'background-image': 'url('+ skill.pathImage +')'
-    }"></div>
+    <div class="content-image">
+        <div class="image" [ngStyle]="{
+            'background-image': 'url(http://localhost:3000/' + skill.pathImage +')'
+        }"></div>
+    </div>
     <h2 class="box-light">{{ skill.name }}</h2>
-    <p class="description">
+    <p class="description box-light">
         {{ skill.description }}
     </p>
     <div class="buttons">
-        <a target="_blank" [href]="skill.link">Layout</a>
+        <a class="button" target="_blank" [href]="skill.link">Layout</a>
     </div>
 </div>
 <div class="loading" *ngIf="!loaded || skill == undefined"></div>

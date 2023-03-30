@@ -17,7 +17,7 @@ app-side-bar{
 }
 main{
     @extend .font-primary;
-    padding: 25px;
+    padding: 20px;
     background: $bg-color;
     flex: 1;
     max-height: 100vh;

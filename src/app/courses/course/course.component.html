@@ -1,13 +1,15 @@
 <div class="container" *ngIf="loaded && course !== undefined">
     <arrow-to-back></arrow-to-back>
-    <div class="image" [ngStyle]="{
-        'background-image': 'url('+ course.pathImage +')'
-    }"></div>
+    <div class="cover">
+        <div class="image" [ngStyle]="{
+            'background-image': 'url('+ course.pathImage +')'
+        }"></div>
+    </div>
     <h2 class="box-light">{{ course.name }}</h2>
     <div class="tags">
         <!--add-tags-->
     </div>
-    <p class="description">
+    <p class="description box-light">
         {{ course.description }}
     </p>
     <div class="buttons">

@@ -17,6 +17,18 @@ export class PageComponent {
     private readonly activatedRoute: ActivatedRoute
   ){
     this.isPanel = activatedRoute.snapshot.data['isPanel'] ?? false
+    pageService.scrollTo.subscribe(this.scrollTo)
+  }
+
+  scrollTo(componentName: string){
+    const component = document.getElementById(`${componentName}-component`)
+    if(!component)
+      return
+
+    document.querySelector('main')?.scroll({
+      top: component.offsetTop - 20,
+      behavior: 'smooth'
+    })
   }
 
 }
