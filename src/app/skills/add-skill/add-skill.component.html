@@ -37,7 +37,13 @@
                     <div
                         class="image"
                         [ngStyle]="{
-                            'background-image': 'url('+ image.preview +')'
+                            'background-image': 'url('+
+                                isEditable &&
+                                image == undefined &&
+                                skill !== undefined ?
+                                    this.skill.pathImage :
+                                    image.preview
+                            +')'
                         }"
                     >
                     </div>
@@ -60,7 +66,7 @@
             >
         </div>
         <div class="buttons">
-            <button (click)="delete()" class="button-danger">deletar</button>
+            <button (click)="delete()" class="button-danger" *ngIf="isEditable">deletar</button>
             <button type="submit" class="button">Salvar</button>
         </div>
     </form>

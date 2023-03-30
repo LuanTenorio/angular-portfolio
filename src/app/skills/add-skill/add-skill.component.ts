@@ -36,12 +36,14 @@ export class AddSkillComponent {
       description: ['', Validators.required],
       link: ['']
     })
+
     if(this.isEditable){
       const id: number = this.activatedRoute.snapshot.params['id']
       const skillBySkills = this.skillsService.skills.find(skill => skill.id == id)
       if(!skillBySkills && !!id)
         this.skillsService.getSkill(id).subscribe(
           ({skill}) => {
+            this.updateForm()
             this.skill = skill
             this.loaded = true
           },
@@ -56,9 +58,16 @@ export class AddSkillComponent {
         )
       else{
         this.skill = skillBySkills
+        this.updateForm()
         this.loaded = true
       }
     }
+  }
+
+  updateForm(){
+    if(this.skill !== undefined)
+      for(const key of Object.keys(this.form.value))
+        this.form.controls[key].setValue(this.skill[key as keyof SkillModel])
   }
 
   save(){
