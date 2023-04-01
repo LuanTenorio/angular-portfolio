@@ -6,16 +6,12 @@ import { SkillsService } from '../skills.service';
   templateUrl: './skills.component.html',
   styleUrls: ['./skills.component.scss']
 })
-export class SkillsComponent implements OnInit {
+export class SkillsComponent {
 
   @Input('isPanel') isPanel: boolean = false
 
   constructor(
     public readonly skillService: SkillsService
   ){}
-
-  ngOnInit(){
-    console.log(this.isPanel)
-  }
 
 }

@@ -28,7 +28,7 @@ export class SkillsService {
       ({capes}) => {
         console.log(capes);
 
-        this.capeOfSkills = [...capes, {id: 9, name: 'peppa'}]
+        this.capeOfSkills = capes
         this.loaded = true
         return {capes}
       }
@@ -42,7 +42,7 @@ export class SkillsService {
   )
 
   addSkill = (createSkill: FormData) => this.http.post<ResponseSkillDto>(this.API, createSkill)
-  patchSkill = (createSkill: FormData, skillId: number) => this.http.post<ResponseSkillDto>(this.API + skillId, createSkill)
+  patchSkill = (createSkill: FormData, skillId: number) => this.http.patch<ResponseSkillDto>(this.API + skillId, createSkill)
   getSkill = (skillId: number) => this.http.get<ResponseSkillDto>(this.API + skillId)
   deleteSkill = (skillId: number) => this.http.delete<ResponseGenericDelete>(this.API + skillId)
 

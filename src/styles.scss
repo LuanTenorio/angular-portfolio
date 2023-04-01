@@ -137,6 +137,7 @@ h1{
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  gap: 10px;
 }
 .button{
   @extend .font-primary, .box-animate;
@@ -193,6 +194,17 @@ form{
       padding: 6px 12px;
       box-shadow: $input-shadow;
       font-size: 16px;
+    }
+    textarea{
+      @extend .font-primary;
+      width: 90%;
+      border-radius: 7px;
+      border: 1px solid $color-primary;
+      padding: 6px 12px;
+      box-shadow: $input-shadow;
+      font-size: 16px;
+      resize: none;
+      height: 150px;
     }
   }
 

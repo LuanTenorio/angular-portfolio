@@ -11,6 +11,7 @@
     </p>
     <div class="buttons">
         <a class="button" target="_blank" [href]="skill.link">Layout</a>
+        <button class="button" (click)="redirectToEdit()" *ngIf="isEditable">Editar</button>
     </div>
 </div>
 <div class="loading" *ngIf="!loaded || skill == undefined"></div>

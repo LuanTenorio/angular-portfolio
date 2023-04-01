@@ -18,7 +18,7 @@ export class AddSkillComponent {
   form: FormGroup
   image?: ImageDto
   isDroping = false
-  isEditable: boolean = this.activatedRoute.snapshot.data['editable'] ?? false
+  isEditable: boolean = this.activatedRoute.snapshot.data['isEditable'] ?? false
   skill?: SkillModel
   loaded = false
   loading = false
@@ -31,6 +31,13 @@ export class AddSkillComponent {
     private readonly router: Router,
     private readonly alertService: AlertService,
   ){
+    console.log(this.image !== undefined ? this.image?.preview : this.skill?.pathImage)
+    setInterval(() => {
+      // console.log(this.image?.preview)
+      // console.log(this.skill?.pathImage)
+      console.log(this.image !== undefined ? this.image?.preview : this.skill?.pathImage)
+    }, 100)
+
     this.form = fb.group({
       name: ['', Validators.required],
       description: ['', Validators.required],
@@ -43,8 +50,8 @@ export class AddSkillComponent {
       if(!skillBySkills && !!id)
         this.skillsService.getSkill(id).subscribe(
           ({skill}) => {
-            this.updateForm()
             this.skill = skill
+            this.updateForm()
             this.loaded = true
           },
           (error: HttpErrorResponse) => {
@@ -71,6 +78,7 @@ export class AddSkillComponent {
   }
 
   save(){
+    console.log('save')
     if(this.form.valid && this.image !== undefined && !this.isEditable){
       this.loading = true
       const form = new FormData()
@@ -92,13 +100,18 @@ export class AddSkillComponent {
       )
     }
 
-    if(this.form.valid && !this.isEditable && this.skill !== undefined){
+    if(this.form.valid && this.isEditable && this.skill !== undefined){
       const form = new FormData()
       for(const key of Object.keys(this.form.value))
         form.append(key, this.form.value[key])
 
       if(this.image !== undefined)
         form.append('_file_image', this.image.file, this.image.file.name)
+
+      form.append('editImage', JSON.stringify(this.image !== undefined)) 
+
+      console.log(this.image)
+      console.log(form)
 
       this.skillsService.patchSkill(form, this.skill.id).subscribe(
         ({skill}) => {

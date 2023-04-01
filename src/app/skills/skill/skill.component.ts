@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Location } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SkillsService } from '../skills.service';
 import { SkillModel } from '../model/skill.model';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -15,13 +15,16 @@ export class SkillComponent {
 
   skill?: SkillModel
   loaded = false
+  isEditable: boolean = this.activatedRoute.snapshot.data['isEditable'] ?? false
 
   constructor(
     public readonly skillsService: SkillsService,
     private readonly activatedRoute: ActivatedRoute,
+    private readonly router: Router,
     private readonly location: Location,
     private readonly alertService: AlertService
   ){
+    setTimeout(() => console.log(this.isEditable), 1500)
     const id: number = this.activatedRoute.snapshot.params['id']
     const skillBySkills = this.skillsService.skills.find(skill => skill.id == id)
     if(!skillBySkills && !!id)
@@ -45,4 +48,11 @@ export class SkillComponent {
       this.loaded = true
     }
   }
+
+  redirectToEdit(){
+    const id: number = this.activatedRoute.snapshot.params['id']
+    if(id && this.isEditable)
+      this.router.navigate(['painel', 'editar', 'habilidade', id])
+  }
+
 }
