@@ -6,4 +6,5 @@ export interface PatchInformationDto {
     github?: string
     instagram?: string
     linkedin?: string
+    image?: string
 }

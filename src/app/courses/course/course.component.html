@@ -6,14 +6,30 @@
         }"></div>
     </div>
     <h2 class="box-light">{{ course.name }}</h2>
-    <div class="tags">
-        <!--add-tags-->
+    <div class="box-tags" *ngIf="course.courseProject.length > 0 || course.skillCourse.length > 0" >
+        <div *ngIf="course.skillCourse.length > 0">
+            <label>Habilidade</label>
+            <app-tag
+                [tags]="filterTag(skillsService.capeOfSkills, course.skillCourse)"
+                [basePath]="(isEditable ? 'painel' : '') + '/habilidade/'"
+            >
+            </app-tag>
+        </div>
+        <div *ngIf="course.courseProject.length > 0">
+            <label>Projetos</label>
+            <app-tag
+                [tags]="filterTag(projectsService.projectsCape, course.courseProject)"
+                [basePath]="(isEditable ? 'painel' : '') + '/projeto/'"
+            >
+            </app-tag>
+        </div>
     </div>
     <p class="description box-light">
         {{ course.description }}
     </p>
     <div class="buttons">
         <a target="_blank" class="button" [href]="course.certificate" *ngIf="course.certificate !== undefined">Certificado</a>
+        <button class="button" (click)="redirectToEdit()" *ngIf="isEditable">Editar</button>
     </div>
 </div>
 <div class="loading" *ngIf="!loaded || course == undefined"></div>

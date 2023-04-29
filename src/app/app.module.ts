@@ -17,6 +17,7 @@ import { NgxFileDropModule } from 'ngx-file-drop';
 import { AlertModule } from './alert/alert.module';
 import { PageModule } from './page/page.module';
 import { MatChipsModule } from '@angular/material/chips';
+import { MatSidenavModule } from '@angular/material/sidenav';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { MatChipsModule } from '@angular/material/chips';
     CoursesModule,
     NgxFileDropModule,
     PageModule,
+    MatSidenavModule,
   ],
   providers: [
     {

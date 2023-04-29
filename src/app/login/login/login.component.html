@@ -7,5 +7,8 @@
         <label for="login-password">Senha</label>
         <input type="text" formControlName="password" id="login-password" placeholder="Senha...">
     </div>
-    <button type="submit">Entrar</button>
+    <div class="buttons">
+        <button type="submit" class="button">Entrar</button>
+    </div>
 </form>
+<div class="loading" *ngIf="loading"></div>

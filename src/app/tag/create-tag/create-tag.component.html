@@ -1,0 +1,10 @@
+<div class="tags" #tags>
+    <div class="tag" *ngFor="let cape of capeTags">
+        <label>{{ cape.name }}</label>
+        <input
+            type="checkbox"
+            [checked]="cape.selected ?? false"
+            [attr.data-id]="cape.id"
+        >
+    </div>
+</div>

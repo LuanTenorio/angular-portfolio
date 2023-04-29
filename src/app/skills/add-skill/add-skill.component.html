@@ -29,6 +29,14 @@
                 placeholder="Descrição."
             ></textarea>
         </div>
+        <div class="field">
+            <label>Cursos</label>
+            <app-create-tag [capeTags]="selectTag(coursesService.capeCourse, skill?.skillCourse ?? [])" #coursesTag></app-create-tag>
+        </div>
+        <div class="field">
+            <label>Projetos</label>
+            <app-create-tag [capeTags]="selectTag(projectsService.projectsCape, skill?.skillProject ?? [])" #projectsTag></app-create-tag>
+        </div>
         <div
             class="drop-image big-field"
             (drop)="drop($event); false"
@@ -48,14 +56,14 @@
                         *ngIf="image !== undefined"
                         class="image"
                         [ngStyle]="{
-                            'background-image': 'url('+ image?.preview +')'
+                            'background-image': 'url('+ image.preview +')'
                         }"
                     ></div>
                     <div
                         *ngIf="image?.preview == undefined"
                         class="image"
                         [ngStyle]="{
-                            'background-image': 'url('+ 'http://localhost:3000/' + this.skill?.pathImage +')'
+                            'background-image': 'url('+ this.skill?.pathImage +')'
                         }"
                     ></div>
                 </div>

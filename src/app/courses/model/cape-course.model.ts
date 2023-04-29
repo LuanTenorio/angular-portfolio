@@ -2,5 +2,6 @@ export interface CapeCourseModel {
     id: number
     name: string,
     pathImage: string,
-    shortDescription: string
+    shortDescription: string,
+    order: number
 }

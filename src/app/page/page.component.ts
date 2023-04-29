@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import { InformationsService } from '../informations/informations.service';
 import { PageService } from './page.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { delay } from 'rxjs/operators';
 
 @Component({
   selector: 'app-page',
@@ -10,14 +10,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PageComponent {
 
-  isPanel: boolean
+  isPanel: boolean = this.activatedRoute.snapshot.data['isPanel'] ?? false
 
   constructor(
-    private readonly pageService: PageService,
+    public readonly pageService: PageService,
     private readonly activatedRoute: ActivatedRoute
   ){
-    this.isPanel = activatedRoute.snapshot.data['isPanel'] ?? false
-    pageService.scrollTo.subscribe(this.scrollTo)
+    pageService.scrollTo.pipe(delay(0)).subscribe(this.scrollTo)
   }
 
   scrollTo(componentName: string){

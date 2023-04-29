@@ -1,11 +1,19 @@
-<div class="tags" #tags>
-  <div class="input-field" *ngFor="let cape of capeTags">
-    <label>{{ cape.name }}</label>
-    <input
-      type="checkbox"
-      data-id="{{cape.id}}"
-    >
-  </div>
+<!-- <div class="tags">
+  <a
+    class="box-animate"
+    *ngFor="let tag of tags"
+    [routerLink]="['/', basePath, tag.id]"
+  >
+    {{ tag.name }}
+  </a>
+</div> -->
+
+<div class="tags">
+  <label
+    class="box-animate box-light"
+    *ngFor="let tag of tags"
+    (click)="redirectTo(tag.id)"
+  >
+    {{ tag.name }}
+  </label>
 </div>
-
-

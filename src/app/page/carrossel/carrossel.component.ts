@@ -20,6 +20,9 @@ export class CarrosselComponent implements OnInit, OnDestroy {
   }
 
   startInterval() {
+    if(this.paths.length >= 1)
+      return
+
     this.intervalId = setInterval(() => {
       this.move(true)
     }, 4000);
@@ -36,7 +39,7 @@ export class CarrosselComponent implements OnInit, OnDestroy {
     const sum = scrollLeft + offsetWidth * (next ? 1 : -1)
 
     carrossel.scroll({
-      left: sum > offsetWidth ? 0 : sum,
+      left: sum >= offsetWidth * this.paths.length ? 0 : sum,
       behavior: 'smooth'
     })
 

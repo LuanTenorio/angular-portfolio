@@ -13,7 +13,7 @@ import { SideBarComponent } from './side-bar/side-bar.component';
   imports: [
     CommonModule,
     BrowserAnimationsModule,
-    MatSidenavModule
+    MatSidenavModule,
   ],
   exports: [
     InformationsComponent,

@@ -6,4 +6,6 @@ export interface CourseModel {
     pathImage: string
     certificate?: string
     order: number
+    courseProject: number[]
+    skillCourse: number[]
 }

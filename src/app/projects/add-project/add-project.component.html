@@ -16,7 +16,7 @@
                 type="text"
                 id="form-add-project-shortDescription"
                 formControlName="shortDescription"
-                placeholder="ww..."
+                placeholder="Descrição curta..."
             >
         </div>
         <div class="field">
@@ -55,6 +55,14 @@
                 placeholder="Repositorio..."
             >
         </div>
+        <div class="field">
+            <label>Habilidades</label>
+            <app-create-tag [capeTags]="selectTag(skillsService.capeOfSkills, project?.skillProject ?? [])" #skillsTag></app-create-tag>
+        </div>
+        <div class="field">
+            <label>Cursos</label>
+            <app-create-tag [capeTags]="selectTag(coursesService.capeCourse, project?.courseProject ?? [])" #coursesTag></app-create-tag>
+        </div>
         <div
             class="drop-image"
             (drop)="drop($event); false"
@@ -84,7 +92,9 @@
         </div>
         <input type="file" id="images" multiple="true" (change)="onFileSelected($event)">
         <div class="buttons">
+            <button type="button" (click)="deleteProject()" class="button-danger" *ngIf="isEditable">deletar</button>
             <button type="submit" class="button">Salvar</button>
         </div>
     </form>
 </div>
+<div class="loading" *ngIf="loading || (isEditable && !loaded)"></div>

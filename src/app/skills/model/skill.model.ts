@@ -5,4 +5,6 @@ export interface SkillModel {
     pathImage: string
     link: string
     order: number
+    skillProject: number[]
+    skillCourse: number[]
 }

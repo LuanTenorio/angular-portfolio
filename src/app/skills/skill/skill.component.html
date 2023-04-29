@@ -6,6 +6,24 @@
         }"></div>
     </div>
     <h2 class="box-light">{{ skill.name }}</h2>
+    <div class="box-tags" *ngIf="skill.skillProject.length > 0 || skill.skillCourse.length > 0" >
+        <div *ngIf="skill.skillCourse.length > 0">
+            <label>Cursos</label>
+            <app-tag
+                [tags]="filterTag(coursesService.capeCourse, skill.skillCourse)"
+                [basePath]="(isEditable ? 'painel' : '') + '/curso/'"
+            >
+            </app-tag>
+        </div>
+        <div *ngIf="skill.skillProject.length > 0">
+            <label>Projetos</label>
+            <app-tag
+                [tags]="filterTag(projectsService.projectsCape, skill.skillProject)"
+                [basePath]="(isEditable ? 'painel' : '') + '/projeto/'"
+            >
+            </app-tag>
+        </div>
+    </div>
     <p class="description box-light">
         {{ skill.description }}
     </p>

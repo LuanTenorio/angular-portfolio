@@ -1,6 +1,6 @@
-<div class="carrossel-box">
-    <div class="arrow left" (click)="move(false)"><</div>
-    <div class="arrow right" (click)="move(true)">></div>
+<div class="carrossel-box" *ngIf="paths.length > 0">
+    <div class="arrow left" (click)="move(false)" *ngIf="paths.length > 1"><</div>
+    <div class="arrow right" (click)="move(true)" *ngIf="paths.length > 1">></div>
     <div class="carrossel" #carrossel>
         <div class="scroll" [ngStyle]="{
             '--pathsNumber': paths.length

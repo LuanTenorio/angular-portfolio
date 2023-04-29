@@ -1,4 +1,5 @@
 export interface JwtPayloadDto{
-    subject: number
-    expiresIn: number
+    sub: string
+    exp: number
+    iat: number
 }

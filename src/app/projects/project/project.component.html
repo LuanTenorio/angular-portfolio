@@ -2,16 +2,32 @@
     <arrow-to-back></arrow-to-back>
     <h2 class="box-light">{{ project.name }}</h2>
     <app-carrossel [paths]="pathsTreatment(project.projectImage)"></app-carrossel>
-    <div class="tags">
-        <!--add-tags-->
+    <div class="box-tags" *ngIf="project.courseProject.length > 0 || project.skillProject.length > 0" >
+        <div *ngIf="project.skillProject.length > 0">
+            <label>Habilidades</label>
+            <app-tag
+                [tags]="filterTag(skillsService.capeOfSkills, project.skillProject)"
+                [basePath]="(isEditable ? 'painel/' : '') + 'habilidade/'"
+            >
+            </app-tag>
+        </div>
+        <div *ngIf="project.courseProject.length > 0">
+            <label>Cursos</label>
+            <app-tag
+                [tags]="filterTag(coursesService.capeCourse, project.courseProject)"
+                [basePath]="(isEditable ? 'painel/' : '') + 'curso/'"
+            >
+            </app-tag>
+        </div>
     </div>
     <p class="description box-light">
         {{ project.description }}
     </p>
     <div class="buttons">
-        <a target="_blank" [href]="project.linkLayout" *ngIf="project.linkLayout !== undefined">Layout</a>
-        <a target="_blank" [href]="project.linkProject" *ngIf="project.linkProject !== undefined">Visitar Site</a>
-        <a target="_blank" [href]="project.linkGithub" *ngIf="project.linkGithub !== undefined">GitHub</a>
+        <a class="button" target="_blank" [href]="project.linkLayout" *ngIf="project.linkLayout">Layout</a>
+        <a class="button" target="_blank" [href]="project.linkProject" *ngIf="project.linkProject">Visitar Site</a>
+        <a class="button" target="_blank" [href]="project.linkGithub" *ngIf="project.linkGithub">GitHub</a>
+        <button class="button" (click)="redirectToEdit()" *ngIf="isEditable">Editar</button>
     </div>
 </div>
 <div class="loading" *ngIf="!loaded || project == undefined"></div>

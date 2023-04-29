@@ -1,19 +1,26 @@
 <h1>Habilidades</h1>
 <div class="content">
-    <div class="skills">
-        <a
-            *ngFor="let skill of skillService.capeOfSkills, let i = index"
-            [ngClass]="{
+    <div
+        [ngClass]="{'edit-order-models': isChangeOrder}"
+        class="skills box-content-links"
+        cdkDropList
+        [cdkDropListData]="skillService.capeOfSkills"
+        (cdkDropListDropped)="drop($event)"
+        [cdkDropListDisabled]="!isChangeOrder"
+    >
+        <a *ngFor="let skill of skillService.capeOfSkills, let i = index" [ngClass]="{
                 'box-dark': i % 2 == 0,
                 'box-light': i % 2 !== 0,
                 'skill': true
             }"
-            [routerLink]="['habilidade', skill.id]"
-        >
+        [routerLink]="['habilidade', skill.id]"
+        cdkDrag
+    >
             <p>{{ skill.name }}</p>
         </a>
     </div>
     <div class="buttons" *ngIf="isPanel">
+        <button class="button" (click)="setChangeOrder(!isChangeOrder)">{{ isChangeOrder ? 'Salvar Ordem' : 'Editar Ordem' }}</button>
         <a [routerLink]="['adicionar', 'habilidade']" class="button">Adicionar</a>
     </div>
 </div>

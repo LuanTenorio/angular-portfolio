@@ -4,6 +4,9 @@ import { CoursesService } from '../courses.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Location } from '@angular/common';
+import { filterTag } from '../../tag/util/filter-tag.uitl';
+import { SkillsService } from '../../skills/skills.service';
+import { ProjectsService } from '../../projects/projects.service';
 
 @Component({
   selector: 'app-course',
@@ -14,17 +17,20 @@ export class CourseComponent {
 
   course?: CourseModel
   loaded = false
+  isEditable: boolean = this.activatedRoute.snapshot.data['isEditable'] ?? false
+  filterTag = filterTag
 
   constructor(
     private readonly coursesService: CoursesService,
     private readonly activatedRoute: ActivatedRoute,
     private readonly router: Router,
-    private location: Location
+    private location: Location,
+    public readonly skillsService: SkillsService,
+    public readonly projectsService: ProjectsService
   ){
     const courseId = activatedRoute.snapshot.params['id']
     const curCourse = this.coursesService.courses.find(({id}) => id == courseId)
     if(curCourse){
-      console.log('do arayyyyyyyyyy')
       this.course = curCourse
       this.loaded = true
     }
@@ -40,4 +46,9 @@ export class CourseComponent {
       )
   }
 
+  redirectToEdit(){
+    const id: number = this.activatedRoute.snapshot.params['id']
+    if(id && this.isEditable)
+      this.router.navigate(['painel', 'editar', 'curso', id])
+  }
 }

@@ -12,6 +12,7 @@ export class PageService {
 
   loaded = false
   scrollTo = new Subject<string>()
+  setStatusBar = new Subject<boolean>()
 
   constructor(
     private readonly informationsService: InformationsService,

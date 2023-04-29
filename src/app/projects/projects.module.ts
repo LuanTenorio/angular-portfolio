@@ -7,8 +7,8 @@ import { RouterModule } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageModule } from '../page/page.module';
-import { NgxFileDropModule } from 'ngx-file-drop';
 import { TagModule } from '../tag/tag.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -23,7 +23,7 @@ import { TagModule } from '../tag/tag.module';
     ReactiveFormsModule,
     TagModule,
     PageModule,
-    NgxFileDropModule
+    DragDropModule
   ],
   exports: [
     ProjectsComponent

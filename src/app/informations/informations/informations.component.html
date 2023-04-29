@@ -1,6 +1,6 @@
 <h1>Sobre <strong>Mim</strong></h1>
 <div class="content">
-    <h2>Thierry Luan Tenório de Jesus</h2>
+    <h2 class="box-light">Thierry Luan Tenório de Jesus</h2>
     <div class="boxs">
         <div class="box-dark">
             <h3>+{{ skillService.capeOfSkills.length }}</h3>
@@ -20,9 +20,39 @@
         </div>
     </div>
     <p
-        class="description"
+        class="description box-light"
         [attr.contenteditable]="isPanel"
+        (blur)="sendPatch($event, 'description')"
     >
         {{informationService.information?.description}}
     </p>
+    <div class="links" *ngIf="isPanel">
+        <div>
+            <label>GitHub</label>
+            <input 
+                type="text" 
+                #inputGit
+                [value]="informationService.information?.github"
+                (keyup.enter)="onSubmitInput(inputGit.value.trim(), 'github')"
+            >
+        </div>
+        <div>
+            <label>Instagram</label>
+            <input 
+                type="text" 
+                #inputInsta
+                [value]="informationService.information?.instagram"
+                (keyup.enter)="onSubmitInput(inputInsta.value.trim(), 'instagram')"
+            >
+        </div>
+        <div>
+            <label>Linkedin</label>
+            <input 
+                type="text" 
+                #inputLinkedin
+                [value]="informationService.information?.linkedin"
+                (keyup.enter)="onSubmitInput(inputLinkedin.value.trim(), 'linkedin')"
+            >
+        </div>
+    </div>
 </div>

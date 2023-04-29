@@ -1,5 +1,6 @@
+import { Component, Input } from '@angular/core';
 import { Location } from '@angular/common';
-import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'arrow-to-back',
@@ -8,9 +9,17 @@ import { Component } from '@angular/core';
 })
 export class ArrowToBackComponent {
 
-  constructor(private location: Location) { }
+  constructor(
+    private readonly location: Location,
+    private readonly router: Router
+  ){}
 
   goBack() {
-    this.location.back();
+    const { navigationId } = this.location.getState() as {navigationId: number}
+    const isPanel = this.router.url.indexOf('painel') !== -1
+
+    return navigationId && navigationId !== 1 ?
+      this.location.back() :
+      this.router.navigateByUrl('/' + isPanel ? 'painel' : '')
   }
 }

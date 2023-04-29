@@ -7,6 +7,8 @@ import { SkillComponent } from './skill/skill.component';
 import { AddSkillComponent } from './add-skill/add-skill.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { PageModule } from '../page/page.module';
+import { TagModule } from '../tag/tag.module';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -20,6 +22,8 @@ import { PageModule } from '../page/page.module';
     ReactiveFormsModule,
     RouterModule,
     PageModule,
+    TagModule,
+    DragDropModule
   ],
   exports: [
     SkillsComponent

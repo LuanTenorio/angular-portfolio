@@ -1,0 +1,16 @@
+.tags{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    flex: 1;
+    gap: 10px;  
+
+    label{
+        padding: 5px 7px;
+        border-radius: 100px;
+        margin-bottom: 7px;
+        border: 1px solid;
+        cursor: pointer;
+    }
+}

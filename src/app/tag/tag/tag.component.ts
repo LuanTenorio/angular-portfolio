@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Input, Output, ViewChild } from '@angular/core';
-import { CapeTagDto } from '../dto/cape-tag.dto';
+import { Component, Input } from '@angular/core';
+import { TagDto } from '../dto/tag.dto';
+import { Router } from '@angular/router';
+import { join } from '@angular-devkit/core';
 
 export interface Fruit {
   name: string;
@@ -12,20 +14,16 @@ export interface Fruit {
 })
 export class TagComponent{
 
-  @Input('capeTags') capeTags: CapeTagDto[] = []
-  @ViewChild('#tags') tags?: HTMLDivElement
-  @Output() getIdsEvent = new EventEmitter<number[]>()
+  @Input('tags') tags: TagDto[] = []
+  @Input('basePath') basePath = ''
 
-  getIds(){
-    const fields = this.tags?.children as HTMLDivElement[] | undefined
-    const ids: number[] = []
-    fields?.forEach(div => {
-      const input = div.children[1] as HTMLInputElement
-      const id = input.getAttribute('data-id')
-      if(input.checked && id !== null)
-        ids.push(+id)
-    })
-    this.getIdsEvent.emit(ids)
+  constructor(
+    private readonly router: Router
+  ){}
+
+  redirectTo(id: number){
+    console.log('/' + this.basePath + id)
+    this.router.navigateByUrl('/' + this.basePath + id)
   }
 
 }

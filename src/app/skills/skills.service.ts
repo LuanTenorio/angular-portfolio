@@ -7,6 +7,7 @@ import { ResponseSkillDto } from './dto/response-skill.dto';
 import { CreateSkillDto } from './dto/create-skill.dto';
 import { SkillModel } from './model/skill.model';
 import { ResponseGenericDelete } from '../dto/response-generic-delete.dto';
+import { AbstractOrderDto } from '../dto/abstract-order.dto';
 
 @Injectable({
   providedIn: 'root'
@@ -22,6 +23,8 @@ export class SkillsService {
   constructor(
     private readonly http: HttpClient
   ) { }
+
+  patchOrder = (skillsOrder: AbstractOrderDto) => this.http.patch<ResponseCapeOfSkillsDto>(this.API + 'order', skillsOrder)
 
   getCapeOfSkills = () => this.http.get<ResponseCapeOfSkillsDto>(this.API + 'capes/').pipe(
     map(
@@ -51,9 +54,10 @@ export class SkillsService {
     if(indexSkill == -1)
       this.skills.push(skill)
 
+    const lastOrder = this.capeOfSkills.at(-1)?.order
     const indexCape = this.capeOfSkills.findIndex(({id}) => id == skill.id)
-    if(indexCape !== -1)
-      this.capeOfSkills.push({id: skill.id, name: skill.name})
+    if(indexCape == -1)
+      this.capeOfSkills.push({id: skill.id, name: skill.name, order: lastOrder ?? 1})
   }
 
   deleteSkillInArray(skillId: number){
@@ -62,8 +66,8 @@ export class SkillsService {
       this.skills.splice(indexSkill, 1)
 
     const indexCape = this.capeOfSkills.findIndex(({id}) => id == skillId)
-      if(indexCape !== -1)
-        this.capeOfSkills.splice(indexCape, 1)
+    if(indexCape !== -1)
+      this.capeOfSkills.splice(indexCape, 1)
   }
 
   updateSkillInArray(skill: SkillModel){

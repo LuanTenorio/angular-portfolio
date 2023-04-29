@@ -1,10 +1,18 @@
 <h1>Cursos</h1>
 <div class="content">
-    <div class="courses">
+    <div
+        [ngClass]="{'edit-order-models': isChangeOrder}"
+        class="courses box-content-links"
+        cdkDropList
+        [cdkDropListData]="coursesService.capeCourse"
+        (cdkDropListDropped)="drop($event)"
+        [cdkDropListDisabled]="!isChangeOrder"
+    >
         <a
             *ngFor="let course of coursesService.capeCourse, let i = index"
-            [routerLink]="['/', 'curso', course.id]"
-            class="course"
+            [routerLink]="['curso', course.id]"
+            class="course box-light"
+            cdkDrag
         >
             <div class="image" [ngStyle]="{
                 'background-image': 'url(' + course.pathImage + ')'
@@ -14,6 +22,7 @@
         </a>
     </div>
     <div class="buttons" *ngIf="isPanel">
+        <button class="button" (click)="setChangeOrder(!isChangeOrder)">{{ isChangeOrder ? 'Salvar Ordem' : 'Editar Ordem' }}</button>
         <a [routerLink]="['adicionar', 'curso']" class="button">Adicionar</a>
     </div>
 </div>

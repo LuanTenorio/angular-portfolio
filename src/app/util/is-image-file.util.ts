@@ -1,0 +1,1 @@
+export const isImageFile = (file: File) => ["image/png", "image/jpeg", "image/jpg", "image/webp"].includes(file.type)

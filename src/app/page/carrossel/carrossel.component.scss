@@ -29,7 +29,7 @@
 	right: 5%;
 }
 .scroll{
-	width: 200%;
+	width: calc(100% * var(--pathsNumber));
 	display: flex;
 }
 .image{

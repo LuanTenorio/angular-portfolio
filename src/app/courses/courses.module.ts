@@ -8,6 +8,7 @@ import { TagModule } from '../tag/tag.module';
 import { PageModule } from '../page/page.module';
 import { CourseComponent } from './course/course.component';
 import { AddCourseComponent } from './add-course/add-course.component';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { AddCourseComponent } from './add-course/add-course.component';
     ReactiveFormsModule,
     TagModule,
     PageModule,
+    DragDropModule
   ],
   exports: [
     CoursesComponent

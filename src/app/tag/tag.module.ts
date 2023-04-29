@@ -9,10 +9,13 @@ import { MatIconModule } from '@angular/material/icon';
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { CreateTagComponent } from './create-tag/create-tag.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
-    TagComponent
+    TagComponent,
+    CreateTagComponent
   ],
   imports: [
     CommonModule,
@@ -23,10 +26,12 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatOptionModule,
     MatAutocompleteModule,
-    MatIconModule
+    MatIconModule,
+    RouterModule
   ],
   exports: [
-    TagComponent
+    TagComponent,
+    CreateTagComponent
   ]
 })
 export class TagModule { }

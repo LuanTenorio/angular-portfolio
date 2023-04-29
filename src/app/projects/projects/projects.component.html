@@ -1,20 +1,28 @@
 <h1>Projetos</h1>
 <div class="content">
-    <div class="projects">
+    <div 
+        [ngClass]="{'edit-order-models': isChangeOrder}"
+        class="projects box-content-links"
+        cdkDropList
+        [cdkDropListData]="projectsService.projectsCape"
+        (cdkDropListDropped)="drop($event)"
+        [cdkDropListDisabled]="!isChangeOrder"
+    >
         <a
             *ngFor="let project of projectsService.projectsCape, let i = index"
-            [routerLink]="['/', 'projeto', project.id]"
-            class="project"
+            [routerLink]="['projeto', project.id]"
+            class="project box-light"
+            cdkDrag
         >
             <div class="image" [ngStyle]="{
                 'background-image': 'url(' + project.cover + ')'
             }"></div>
-            <div [ngStyle]="{'background-image': 'url(' + project.cover + ')'}" alt="Capa do Projeto"></div>
             <p class="name">{{ project.name }}</p>
             <p class="description">{{ project.shortDescription }}</p>
         </a>
     </div>
     <div class="buttons" *ngIf="isPanel">
+        <button class="button" (click)="setChangeOrder(!isChangeOrder)">{{ isChangeOrder ? 'Salvar Ordem' : 'Editar Ordem' }}</button>
         <a [routerLink]="['adicionar', 'projeto']" class="button">Adicionar</a>
     </div>
 </div>
