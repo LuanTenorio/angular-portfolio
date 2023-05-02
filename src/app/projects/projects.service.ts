@@ -14,7 +14,7 @@ import { AbstractOrderDto } from '../dto/abstract-order.dto';
 })
 export class ProjectsService {
 
-  API = 'http://localhost:3000/api/project/'
+  API = '/api/project/'
   projectsCape: ProjectCapeModel[] = []
   projects: ProjectModel[] = []
   loaded = false

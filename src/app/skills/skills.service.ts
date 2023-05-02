@@ -4,7 +4,6 @@ import { ResponseCapeOfSkillsDto } from './dto/response-cape-of-skill.dto';
 import { CapeOfSkillsModel } from './model/cape-of-skill.model';
 import { catchError, map } from 'rxjs';
 import { ResponseSkillDto } from './dto/response-skill.dto';
-import { CreateSkillDto } from './dto/create-skill.dto';
 import { SkillModel } from './model/skill.model';
 import { ResponseGenericDelete } from '../dto/response-generic-delete.dto';
 import { AbstractOrderDto } from '../dto/abstract-order.dto';
@@ -14,7 +13,7 @@ import { AbstractOrderDto } from '../dto/abstract-order.dto';
 })
 export class SkillsService {
 
-  API = 'http://localhost:3000/api/skill/'
+  API = '/api/skill/'
 
   loaded = false
   capeOfSkills: CapeOfSkillsModel[] = []

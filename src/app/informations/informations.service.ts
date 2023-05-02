@@ -10,7 +10,7 @@ import { ResponseInformationDto } from './dto/response-information.dto';
 })
 export class InformationsService {
 
-  API = 'http://localhost:3000/api/information'
+  API = '/api/information/'
   loaded = false
   information?: InformationModel
   loadedObservable = new Subject<boolean>()

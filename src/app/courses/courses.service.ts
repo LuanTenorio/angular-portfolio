@@ -15,7 +15,7 @@ import { AbstractOrderDto } from '../dto/abstract-order.dto';
 })
 export class CoursesService {
 
-  API = 'http://localhost:3000/api/course/'
+  API = '/api/course/'
   capeCourse: CapeCourseModel[] = []
   courses: CourseModel[] = []
   loaded = false

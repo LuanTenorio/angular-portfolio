@@ -8,7 +8,7 @@ import { ResponseLoginDto } from './dto/response-login.dto';
 })
 export class LoginService {
 
-  API = 'http://localhost:3000/api/user/login'
+  API = '/api/user/login/'
 
   constructor(
     private readonly http: HttpClient

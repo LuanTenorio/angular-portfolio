@@ -16,12 +16,11 @@ export class IsAuthenticatedGuard implements CanActivate {
     const payload = decodeJwtUtil(jwt ?? '')
     const isAuthenticated = payload !== undefined && payload.exp < new Date().getTime()
 
-    console.log({jwt, payload, isAuthenticated})
     if(isAuthenticated)
-      return isAuthenticated
+      return true
 
     this.router.navigateByUrl('/login')
-    this.alertService.addAlert('Não authenticado')
+    this.alertService.addAlert('Não autenticado')
 
     return false
   }
